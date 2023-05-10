@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        .size {
+            background-color: skyblue;
+            display: inline-block;
+            font-size: 48px;
+            padding: 10px;
+            margin-top: 10px;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="size">
+        Window Size
+    </div>
+    <script>
+        function updateValue() {
+            const changeSize  = document.querySelector('.size');
+            changeSize.innerHTML = ` window.screen : ${window.screen.width},${window.screen.height} </br>
+                                     window.outer : ${window.outerWidth},${window.outerHeight} </br>
+                                     window.inner : ${window.innerWidth},${window.innerHeight} </br>
+                                     documentElement.clientWidth : ${document.documentElement.clientWidth},${document.documentElement.clientHeight}
+                                     `
+                                     
+        }
+        window.addEventListener('resize', () => {
+            updateValue()
+        });
+        updateValue()
+    </script> 
+  </body>
+</html>

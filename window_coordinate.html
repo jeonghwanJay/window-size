@@ -14,30 +14,57 @@
         width: 300px;
         height: 300px;
         margin-bottom: 10px;
+        border-radius: 5px;
       }
-      .target {
+      .boxTarget {
         background-color: orange;
+      }
+      header {
+        position: fixed;
+        top: 20px;
+        right: 15px;
+      }
+      button {
+        padding: 5px;
       }
     </style>
   </head>
   <body>
+    <header>
+      <button class="scrollBy">Scroll By 100px(y)</button>
+      <button class="scrollTo">Scroll To 100px(y)</button>
+      <button class="scrollTarget">Scroll into special</button>
+    </header>
     <div></div>
     <div></div>
     <div></div>
     <div></div>
     <div></div>
     <div></div>
-    <div class="box target"></div>
+    <div class="boxTarget"></div>
     <div></div>
     <div></div>
     <div></div>
     <script>
-      const target = document.querySelector(".target");
+      const target = document.querySelector(".boxTarget");
       const getB = target.getBoundingClientRect();
-      document.addEventListener("click", e => {
+      target.addEventListener("click", (e) => {
         console.log(getB);
         console.log(`clientX:${e.clientX}, clientY:${e.clientY}`);
         console.log(`pageX:${e.pageX}, pageY:${e.pageY}`);
+      });
+
+      const scrollBy = document.querySelector(".scrollBy");
+      const scrollTo = document.querySelector(".scrollTo");
+      const scrollTarget = document.querySelector(".scrollTarget");
+      scrollBy.addEventListener("click", () => {
+        window.scrollBy({ top: 100, behavior: "smooth" });
+      });
+      scrollTo.addEventListener("click", () => {
+        window.scrollTo({ top: 100, behavior: "smooth" });
+      });
+      scrollTarget.addEventListener("click", () => {
+        target.scrollIntoView({ behavior: "smooth" });
       });
     </script>
   </body>
